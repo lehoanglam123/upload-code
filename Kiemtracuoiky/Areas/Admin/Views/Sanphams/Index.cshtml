@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Kiemtracuoiky.Areas.Admin.Data.Sanpham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        html{
+            font-family:Lato, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Danhmuc.tendanhmuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tensanpham)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Giamgia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaysanxuat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thongtin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hinhanh)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Danhmuc.tendanhmuc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tensanpham)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Giamgia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaysanxuat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thongtin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hinhanh)
+                </td>
+                <td>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>@Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.id }) |
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>@Html.ActionLink("Thông tin chi tiết", "Details", new { id = item.id }) |
+                    <i class="fa fa-trash" aria-hidden="true"></i>@Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <button class="btn btn-primary me-md-2" type="button"><a style="text-decoration:none; color: #ffffff" href="@Url.Action("Create","Sanphams")">Thêm sản phẩm</a></button>
+</body>
+</html>
